@@ -1,0 +1,40 @@
+---
+# tasks file for squid
+
+- name: include ~> setup for {{ ansible_os_family }}
+  include: "setup-{{ ansible_os_family }}.yml"
+
+- name: package ~> install squid
+  package:
+    name: squid
+    state: present
+
+- name: service ~> enabled and stopped
+  service:
+    name: squid
+    enabled: true
+    state: stopped
+
+- name: file ~> cache dir setup
+  file:
+    path: "{{ item.dir }}"
+    state: directory
+    owner: "{{ squid_user }}"
+    group: "{{ squid_group }}"
+    mode: "0644"
+  loop: "{{ squid_cache_dir }}"
+
+- name: template ~> create config
+  template:
+    src: squid.conf.j2
+    dest: /etc/squid/squid-test.conf
+    owner: "{{ squid_user }}"
+    group: "{{ squid_group }}"
+    backup: true
+
+- name: command ~> validate config
+  command: squid -k parse
+
+- name: command ~> generate cache dir
+  command: squid -z
+  notify: start squid

@@ -1,0 +1,13 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: squid
+  vars:
+    squid_cache_dir:
+    - dir: /srv/cache/disk1
+      type: aufs
+      options: 5000 24 256
+    - dir: /srv/cache/disk2
+      type: aufs
+      options: 5000 24 256

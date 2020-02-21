@@ -1,0 +1,11 @@
+---
+# handlers file for squid
+- name: start squid
+  service:
+    name: squid
+    state: started
+
+- name: stop squid
+  service:
+    name: squid
+    state: stopped
