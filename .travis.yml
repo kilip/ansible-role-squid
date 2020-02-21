@@ -4,7 +4,7 @@ services: docker
 
 env:
   global:
-    - ROLE_NAME: docker
+    - ROLE_NAME: squid
   matrix:
     - MOLECULE_DISTRO: centos8
     - MOLECULE_DISTRO: centos7
@@ -20,8 +20,8 @@ install:
 before_script:
   # Use actual Ansible Galaxy role name for the project directory.
   - cd ../
-  - mv ansible-role-$ROLE_NAME geerlingguy.$ROLE_NAME
-  - cd geerlingguy.$ROLE_NAME
+  - mv ansible-role-$ROLE_NAME kilip.$ROLE_NAME
+  - cd kilip.$ROLE_NAME
 
 script:
   # Run tests.

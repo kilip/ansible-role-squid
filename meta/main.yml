@@ -4,7 +4,6 @@ galaxy_info:
   description: Install and Configures Squid Proxy Server
   company: DoyoLabs
   license: MIT
-  role_name: squid
   min_ansible_version: 2.4
   platforms:
   - name: CentOS
