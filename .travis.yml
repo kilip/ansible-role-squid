@@ -29,8 +29,8 @@ before_script:
   - cd kilip.$ROLE_NAME
 
 script:
-  # Run tests.
-  - molecule verify
+# Run tests.
+- molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
