@@ -1,2 +1,2 @@
-- name: include ~> redhat config
+- name: include ~> RedHat config
   include_vars: redhat.yml
