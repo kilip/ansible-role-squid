@@ -17,8 +17,8 @@
 
 - name: file ~> check if directory already created
   stat:
-    path: "{{ squid_cache_dir[0].dir }}"
-  register: squid_cache_dir_first
+    path: "{{ squid_cache_dirs[0].dir }}"
+  register: squid_cache_dirs_first
 
 - name: file ~> cache dir setup
   file:
@@ -27,8 +27,8 @@
     owner: "{{ squid_user }}"
     group: "{{ squid_group }}"
     mode: "0644"
-  loop: "{{ squid_cache_dir }}"
-  when: not squid_cache_dir_first.stat.exists
+  loop: "{{ squid_cache_dirs }}"
+  when: not squid_cache_dirs_first.stat.exists
 
 # @todo provide a way to generate cache dir properly
 - name: template ~> create config

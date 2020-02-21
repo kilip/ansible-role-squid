@@ -9,7 +9,7 @@
   roles:
     - role: squid
   vars:
-    squid_cache_dir:
+    squid_cache_dirs:
     - dir: /srv/cache/disk1
       type: aufs
       options: 5000 24 256

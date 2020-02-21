@@ -33,7 +33,7 @@ squid: |
 
 
 # defaults file for squid
-squid_cache_dir:
+squid_cache_dirs:
 - dir: /var/cache/squid
   type: aufs
   options: '5000 16 256'

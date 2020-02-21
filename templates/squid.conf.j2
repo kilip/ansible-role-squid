@@ -1,6 +1,6 @@
 
 # cache dir config
-{% for item in squid_cache_dir %}
+{% for item in squid_cache_dirs %}
 cache_dir {{ item.type }} {{ item.dir }} {{ item.options }}
 {% endfor %}
 
