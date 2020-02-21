@@ -30,7 +30,7 @@
   loop: "{{ squid_cache_dir }}"
   when: not squid_cache_dir_first.stat.exists
 
-
+# @todo provide a way to generate cache dir properly
 - name: template ~> create config
   template:
     src: squid.conf.j2
@@ -38,6 +38,3 @@
     owner: "{{ squid_user }}"
     group: "{{ squid_group }}"
     backup: true
-  notify:
-  - generate cache
-  - restart service
