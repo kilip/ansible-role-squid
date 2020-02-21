@@ -14,6 +14,7 @@ def test_squid(host):
     assert pkg.is_installed
     assert port.is_listening
 
+
 def test_cache_dir(host):
     assert host.file('/srv/cache/disk1').exists
     assert host.file('/srv/cache/disk2').exists
@@ -22,8 +23,8 @@ def test_cache_dir(host):
     file = host.file('/srv/cache/disk1')
 
     if(host_type == 'centos'):
-      assert file.user == 'squid'
-      assert file.group == 'squid'
+        assert file.user == 'squid'
+        assert file.group == 'squid'
     else:
-      assert file.user == 'proxy'
-      assert file.group == 'proxy'
+        assert file.user == 'proxy'
+        assert file.group == 'proxy'

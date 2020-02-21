@@ -5,9 +5,8 @@ dependency:
 driver:
   name: docker
 
-lint: |
-  yamllint .
-  ansible-lint
+lint:
+  name: yamllint
 
 platforms:
   - name: instance
@@ -27,5 +26,5 @@ provisioner:
 
 verifier:
   name: testinfra
-#  lint:
-#    name: flake8
+  lint:
+    name: flake8
