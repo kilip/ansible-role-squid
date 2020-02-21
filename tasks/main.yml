@@ -13,14 +13,12 @@
   service:
     name: squid
     enabled: true
-    state: stopped
+    state: started
 
 - name: file ~> check if directory already created
   stat:
     path: "{{ squid_cache_dir[0].dir }}"
   register: squid_cache_dir_first
-
-- debug: msg={{ squid_cache_dir_first }}
 
 - name: file ~> cache dir setup
   file:
@@ -41,4 +39,4 @@
     backup: true
   notify:
   - generate cache
-  - start service
+  - restart service

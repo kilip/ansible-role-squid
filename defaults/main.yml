@@ -36,6 +36,6 @@ squid: |
 squid_cache_dir:
 - dir: /var/cache/squid
   type: aufs
-  options: '5000 24 256'
+  options: '5000 16 256'
 
 squid_cache_mem: 128M

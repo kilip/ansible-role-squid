@@ -3,12 +3,7 @@
 - name: generate cache
   command: squid -z
 
-- name: start service
+- name: restart service
   service:
     name: squid
-    state: started
-
-- name: stop squid
-  service:
-    name: squid
-    state: stopped
+    state: restarted
