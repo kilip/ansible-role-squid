@@ -3,6 +3,10 @@ dist: bionic
 language: python
 services: docker
 
+cache:
+- pip
+- apt
+
 env:
   global:
     - ROLE_NAME: squid
