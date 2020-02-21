@@ -13,7 +13,12 @@
   service:
     name: squid
     enabled: true
-    state: stopped
+    state: started
+
+- name: file ~> check if directory already created
+  stat:
+    path: "{{ squid_cache_dir[0].dir }}"
+  register: squid_cache_dir_first
 
 - name: file ~> cache dir setup
   file:
@@ -23,7 +28,9 @@
     group: "{{ squid_group }}"
     mode: "0644"
   loop: "{{ squid_cache_dir }}"
+  when: not squid_cache_dir_first.stat.exists
 
+# @todo provide a way to generate cache dir properly
 - name: template ~> create config
   template:
     src: squid.conf.j2
@@ -31,10 +38,3 @@
     owner: "{{ squid_user }}"
     group: "{{ squid_group }}"
     backup: true
-
-- name: command ~> validate config
-  command: squid -k parse
-
-- name: command ~> generate cache dir
-  command: squid -z
-  notify: start squid

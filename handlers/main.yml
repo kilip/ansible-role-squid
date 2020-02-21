@@ -1,11 +1,19 @@
 ---
 # handlers file for squid
-- name: start squid
+- name: generate cache
+  command: squid -z
+
+- name: start service
   service:
     name: squid
     state: started
 
-- name: stop squid
+- name: stop service
   service:
     name: squid
     state: stopped
+
+- name: restart service
+  service:
+    name: squid
+    state: restarted
