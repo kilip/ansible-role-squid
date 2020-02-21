@@ -2,6 +2,7 @@
 galaxy_info:
   author: Anthonius Munthi
   description: Install and Configures Squid Proxy Server
+  role_name: squid
   company: DoyoLabs
   license: MIT
   min_ansible_version: 2.4
