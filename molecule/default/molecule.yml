@@ -27,5 +27,3 @@ provisioner:
 
 verifier:
   name: testinfra
-  lint:
-    name: flake8
