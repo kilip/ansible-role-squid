@@ -30,6 +30,7 @@
   loop: "{{ squid_cache_dir }}"
   when: not squid_cache_dir_first.stat.exists
 
+
 - name: template ~> create config
   template:
     src: squid.conf.j2
