@@ -10,9 +10,7 @@ cache:
 env:
   global:
     - ROLE_NAME: squid
-    - SCENARIO: default
   matrix:
-    - SCENARIO: selinux
     - MOLECULE_DISTRO: centos8
     - MOLECULE_DISTRO: centos7
     - MOLECULE_DISTRO: ubuntu1804
@@ -32,7 +30,7 @@ before_script:
 
 script:
 # Run tests.
-- molecule test -s ${SCENARIO}
+- molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

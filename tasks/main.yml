@@ -31,7 +31,7 @@
   when: not squid_cache_dirs_first.stat.exists
 
 - name: include ~> postinstall
-  include: "post-install/{{ansible_os_family}}.yml"
+  include: "post-install/{{ ansible_os_family }}.yml"
 
 # @todo provide a way to generate cache dir properly
 - name: template ~> create config
