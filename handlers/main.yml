@@ -13,7 +13,7 @@
     name: squid
     state: stopped
 
-- name: restart service
+- name: squid restart
   service:
     name: squid
     state: restarted

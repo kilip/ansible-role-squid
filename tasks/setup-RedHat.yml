@@ -1,2 +1,7 @@
+---
 - name: include ~> RedHat config
   include_vars: redhat.yml
+
+- name: fact ~> configure vars in RedHat
+  set_fact:
+    _squid_firewall: firewalld

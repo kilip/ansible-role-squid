@@ -10,7 +10,9 @@ cache:
 env:
   global:
     - ROLE_NAME: squid
+    - SCENARIO: default
   matrix:
+    - SCENARIO: selinux
     - MOLECULE_DISTRO: centos8
     - MOLECULE_DISTRO: centos7
     - MOLECULE_DISTRO: ubuntu1804
@@ -20,7 +22,7 @@ env:
 
 install:
   # Install test dependencies.
-  - pip install molecule yamllint ansible-lint docker testinfra
+  - pip install molecule yamllint ansible-lint docker testinfra molecule-vagrant
 
 before_script:
   # Use actual Ansible Galaxy role name for the project directory.
@@ -30,7 +32,7 @@ before_script:
 
 script:
 # Run tests.
-- molecule test
+- molecule test -s ${SCENARIO}
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

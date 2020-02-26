@@ -3,12 +3,17 @@
   hosts: all
   become: true
   pre_tasks:
-    - name: Update apt cache.
-      apt: update_cache=yes cache_valid_time=600
-      when: ansible_os_family == 'Debian'
+
+    - name: include os family tasks
+      include: "./include/{{ ansible_os_family }}.yml"
+
+    - name: install wget
+      package: name=wget state=present
+
   roles:
     - role: squid
   vars:
+    squid_configure_firewall: true
     squid_cache_dirs:
     - dir: /srv/cache/disk1
       type: aufs
